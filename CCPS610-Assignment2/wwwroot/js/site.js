@@ -59,6 +59,8 @@ $('#employeetablebody').ready(function () {
                         <td>${employee.commissionPct?.toFixed(2) ?? 'N/A'}</td>
                         <td>${employee.managerId ?? 'N/A'}</td>
                         <td>${employee.departmentId ?? 'N/A'}</td>
+                        <td><a href="/Employee/Edit/${employee.employeeId}" class="btn btn-secondary">Edit</a></td>
+                        <td><a href="/Employee/Delete/${employee.employeeId}" class="btn btn-danger">Delete</a></td>
                     </tr>`;
                 tableBody.append(row);
             });

@@ -19,6 +19,29 @@ namespace CCPS610_Assignment2.Controllers
             return View();
         }
 
+        [HttpGet("Employee/Create")]
+        public IActionResult Create()
+        {
+            return View(new EmployeeModel());
+        }
+
+        [HttpGet("Employee/Edit/{id}")]
+        public IActionResult Edit(int id)
+        {
+            var employee = _context.HrEmployees.FirstOrDefault(u => u.EmployeeId == id);
+
+            if (employee == null)
+                return NotFound();
+
+            return View(employee);
+        }
+
+        [HttpGet("Employee/Delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            return Ok(0);
+        }
+
         [HttpGet("Employee/AllEmployees")]
         public IActionResult GetAllEmployees()
         {
