@@ -1,6 +1,7 @@
 ﻿using CCPS610_Assignment2.DatabaseContext;
 using CCPS610_Assignment2.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CCPS610_Assignment2.Controllers
 {

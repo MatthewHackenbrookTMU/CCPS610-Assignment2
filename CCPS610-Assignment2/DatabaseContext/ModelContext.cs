@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using CCPS610_Assignment2.DatabaseContext.Tables;
+using System.Data.SqlClient;
+using Oracle.ManagedDataAccess.Client;
 
 namespace CCPS610_Assignment2.DatabaseContext
 {
@@ -419,5 +421,21 @@ namespace CCPS610_Assignment2.DatabaseContext
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public void HireEmployee(HrEmployee hrEmployee)
+        {
+            var p_first_name = new OracleParameter("p_first_name", hrEmployee.FirstName ?? (object)DBNull.Value);
+            var p_last_name = new OracleParameter("p_last_name", hrEmployee.LastName);
+            var p_email = new OracleParameter("p_email", hrEmployee.Email);
+            var p_salary = new OracleParameter("p_salary", hrEmployee.Salary ?? (object)DBNull.Value);
+            var p_hire_date = new OracleParameter("p_hire_date", hrEmployee.HireDate);
+            var p_phone = new OracleParameter("p_phone", hrEmployee.PhoneNumber ?? (object)DBNull.Value);
+            var p_job_id = new OracleParameter("p_job_id", hrEmployee.JobId);
+            var p_manager_id = new OracleParameter("p_manager_id", hrEmployee.ManagerId ?? (object)DBNull.Value);
+            var p_department_id = new OracleParameter("p_department_id", hrEmployee.DepartmentId ?? (object)DBNull.Value);
+
+            Database.ExecuteSqlRaw("BEGIN EMPLOYEE_HIRE_SP(:p_first_name, :p_last_name, :p_email, :p_salary, :p_hire_date, :p_phone, :p_job_id, :p_manager_id, :p_department_id); END;",
+                p_first_name, p_last_name, p_email, p_salary, p_hire_date, p_phone, p_job_id, p_manager_id, p_department_id);
+        }
     }
 }

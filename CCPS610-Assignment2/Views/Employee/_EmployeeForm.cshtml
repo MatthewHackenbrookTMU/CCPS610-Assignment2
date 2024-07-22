@@ -2,26 +2,9 @@
 @{
 }
 
-<ul>
-    <li>@Model.EmployeeId</li>
-    <li>@Model.FirstName</li>
-    <li>@Model.LastName</li>
-    <li>@Model.Email</li>
-    <li>@Model.PhoneNumber</li>
-    <li>@Model.HireDate</li>
-    <li>@Model.JobId</li>
-    <li>@Model.Salary</li>
-    <li>@Model.CommissionPct</li>
-    <li>@Model.ManagerId</li>
-    <li>@Model.DepartmentId</li>
-</ul>
-
-
 <form method="post" class="mt-4">
     <div class="form-group">
-        <label asp-for="@Model.EmployeeId" class="control-label"></label>
-        <input asp-for="@Model.EmployeeId" class="form-control" />
-        <span asp-validation-for="@Model.EmployeeId" class="text-danger"></span>
+        <input type="hidden" asp-for="@Model.EmployeeId" class="form-control" />
     </div>
     <div class="form-group">
         <label asp-for="@Model.FirstName" class="control-label"></label>
@@ -44,9 +27,9 @@
         <span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="@Model.HireDate" class="control-label"></label>
-        <input asp-for="@Model.HireDate" class="form-control" />
-        <span asp-validation-for="@Model.HireDate" class="text-danger"></span>
+        <label asp-for="HireDate" class="control-label"></label>
+        <input asp-for="HireDate" class="form-control" type="date" />
+        <span asp-validation-for="HireDate" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="@Model.JobId" class="control-label"></label>
@@ -75,3 +58,5 @@
     </div>
     <button type="submit" class="btn btn-primary">Create</button>
 </form>
+
+<script src="~/js/site.js" asp-append-version="true"></script>

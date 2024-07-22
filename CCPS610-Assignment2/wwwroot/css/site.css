@@ -1,18 +1,41 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+table.table tbody tr {
+    position: relative;
+}
+
+/* Initially hide the edit button */
+.edit-btn {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.edit-btn a {
+    padding: 0.5rem 2rem;
+    margin-right: 10px;
+}
+
+/* Show the edit button on row hover */
+table.table tbody tr:hover .edit-btn {
+    display: inline-block;
 }
