@@ -10,7 +10,7 @@ namespace CCPS610_Assignment2.DatabaseContext.Tables
             HrDepartments = new HashSet<HrDepartment>();
         }
 
-        public byte LocationId { get; set; }
+        public int LocationId { get; set; }
         public string? StreetAddress { get; set; }
         public string? PostalCode { get; set; }
         public string City { get; set; } = null!;

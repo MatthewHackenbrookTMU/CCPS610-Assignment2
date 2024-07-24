@@ -37,7 +37,17 @@ $('#employeetablebody').ready(function () {
     if (!$('div').is('.EmployeeList')) {
         return;
     }
-    $.getScript("/js/employee.js")
+    $.getScript("/js/employee-index.js")
+        .done(function (script, textStatus) {
+            console.log("Script loaded successfully: " + textStatus);
+        })
+        .fail(function (jqxhr, settings, exception) {
+            console.error("Failed to load script: " + exception);
+        });
+});
+
+$('.EmployeeForm').ready(function () {
+    $.getScript("/js/employee-form.js")
         .done(function (script, textStatus) {
             console.log("Script loaded successfully: " + textStatus);
         })

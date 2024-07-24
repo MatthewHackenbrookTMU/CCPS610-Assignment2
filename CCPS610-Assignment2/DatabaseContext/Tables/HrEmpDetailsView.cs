@@ -8,8 +8,8 @@ namespace CCPS610_Assignment2.DatabaseContext.Tables
         public int EmployeeId { get; set; }
         public string JobId { get; set; } = null!;
         public int? ManagerId { get; set; }
-        public byte? DepartmentId { get; set; }
-        public byte? LocationId { get; set; }
+        public int? DepartmentId { get; set; }
+        public int? LocationId { get; set; }
         public string? CountryId { get; set; }
         public string? FirstName { get; set; }
         public string LastName { get; set; } = null!;

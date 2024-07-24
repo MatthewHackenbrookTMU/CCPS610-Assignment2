@@ -8,9 +8,11 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
-        builder.Services.AddDbContext<ModelContext>(options => options.UseOracle("User Id=SERVICE_ACCOUNT;Password=password;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=FREEPDB1)))"));
-        builder.Services.AddAutoMapper(typeof(Program));
-        builder.Services.AddControllersWithViews();
+        builder.Services
+            .AddDbContext<ModelContext>(options => 
+                options.UseOracle("User Id=SERVICE_ACCOUNT;Password=password;Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=FREEPDB1)))"))
+            .AddAutoMapper(typeof(Program))
+            .AddControllersWithViews();
 
         var app = builder.Build();
 

@@ -31,8 +31,8 @@ table.table tbody tr {
 }
 
 .edit-btn a {
+    opacity: 0.8;
     padding: 0.5rem 2rem;
-    margin-right: 10px;
 }
 
 /* Show the edit button on row hover */

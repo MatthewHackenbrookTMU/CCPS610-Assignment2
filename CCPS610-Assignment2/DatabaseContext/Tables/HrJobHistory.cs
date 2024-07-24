@@ -9,7 +9,7 @@ namespace CCPS610_Assignment2.DatabaseContext.Tables
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string JobId { get; set; } = null!;
-        public byte? DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
 
         public virtual HrDepartment? Department { get; set; }
         public virtual HrEmployee Employee { get; set; } = null!;

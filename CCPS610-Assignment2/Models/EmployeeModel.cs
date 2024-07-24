@@ -15,6 +15,6 @@ namespace CCPS610_Assignment2.Models
         public decimal? Salary { get; set; }
         public decimal? CommissionPct { get; set; }
         public int? ManagerId { get; set; }
-        public byte? DepartmentId { get; set; }
+        public int? DepartmentId { get; set; }
     }
 }

@@ -11,10 +11,10 @@ namespace CCPS610_Assignment2.DatabaseContext.Tables
             HrJobHistories = new HashSet<HrJobHistory>();
         }
 
-        public byte DepartmentId { get; set; }
+        public int DepartmentId { get; set; }
         public string DepartmentName { get; set; } = null!;
         public int? ManagerId { get; set; }
-        public byte? LocationId { get; set; }
+        public int? LocationId { get; set; }
 
         public virtual HrLocation? Location { get; set; }
         public virtual HrEmployee? Manager { get; set; }
