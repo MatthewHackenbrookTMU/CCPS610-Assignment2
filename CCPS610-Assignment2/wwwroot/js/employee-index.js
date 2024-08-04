@@ -1,15 +1,18 @@
 $(document).ready(function () {
-    $('#employeetablebody').ready(function () {
+    $('#employeeTableBody').ready(function () {
         if (!$('div').is('.EmployeeList')) {
             return;
         }
 
+        var loadingSpinner = $('#employeeTableLoadingSpinner');
+
+        loadingSpinner.show();
 
         $.ajax({
             url: '/employee/AllEmployees',
             method: 'GET',
             success: function (data) {
-                var tableBody = $('#employeetablebody');
+                var tableBody = $('#employeeTableBody');
                 tableBody.empty(); // Clear existing rows
 
                 data.forEach(function (employee) {
@@ -25,13 +28,19 @@ $(document).ready(function () {
                         <td>${employee.commissionPct?.toFixed(2) ?? 'N/A'}</td>
                         <td>${employee.managerId ?? 'N/A'}</td>
                         <td>${employee.departmentId ?? 'N/A'}</td>
-                        <td class="edit-btn"><a href="/Employee/Edit/${employee.employeeId}" class="btn btn-secondary">Edit</a><a style="margin-left: 100px;" href="/Employee/Delete/${employee.employeeId}" class="btn btn-danger">Delete</a></td>
+                        <td class="edit-btn" style="padding: 0; align-items: center">
+                           <a href="/Employee/Edit/${employee.employeeId}" class="btn btn-secondary">Edit</a>
+                           <a style="margin-left: 100px;" href="/Employee/Delete/${employee.employeeId}" class="btn btn-danger">Delete</a>
+                        </td>
                     </tr>`;
                     tableBody.append(row);
                 });
             },
             error: function () {
                 alert('Failed to load employees.');
+            },
+            complete: function () {
+                loadingSpinner.hide();
             }
         });
     });

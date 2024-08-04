@@ -1,0 +1,12 @@
+﻿@model JobModel
+@{
+}
+
+<h1>Edit Job</h1>
+
+@using (Html.BeginForm("Edit", "Job", FormMethod.Post))
+{
+    @await Html.PartialAsync("_JobForm", Model)
+    <br />
+    <button type="submit" class="btn btn-primary">Edit Job</button>
+}

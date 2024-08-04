@@ -1,21 +1,32 @@
 ﻿@page
 @{
 }
-<div class="JobList">
+<div class="JobList card" style="height: 80vh; overflow: auto">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1>Jobs</h1>
+            <a href="/Job/Create" class="btn btn-primary">Create New Job</a>
+        </div>
+    </div>
 
-<h1>Job</h1>
+    <div class="card-body">
+        <div id="jobTableLoadingSpinner" class="modal" style="display: flex; justify-content: center; align-items: center;">
+            <div class="spinner-grow" role="status" style="position: fixed; width: 200px; height: 200px; z-index: 9999;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th scope="col">Job ID</th>
-            <th scope="col">Job Title</th>
-            <th scope="col">Min Salary</th>
-            <th scope="col">Max Salary</th>
-        </tr>
-    </thead>
-    <tbody id="jobtablebody">
-    </tbody>
-</table>
-
+        <table class="table table-striped table-hover" style="overflow-x: scroll">
+            <thead>
+                <tr>
+                    <th scope="col">Job ID</th>
+                    <th scope="col">Job Title</th>
+                    <th scope="col">Min Salary</th>
+                    <th scope="col">Max Salary</th>
+                </tr>
+            </thead>
+            <tbody id="jobTableBody">
+            </tbody>
+        </table>
+    </div>
 </div>

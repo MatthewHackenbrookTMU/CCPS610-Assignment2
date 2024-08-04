@@ -25,13 +25,12 @@ table.table tbody tr {
 .edit-btn {
     display: none;
     position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 0);
+    background-color: transparent;
 }
 
 .edit-btn a {
-    opacity: 0.8;
     padding: 0.5rem 2rem;
 }
 

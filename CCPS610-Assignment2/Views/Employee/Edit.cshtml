@@ -4,4 +4,9 @@
 
 <h1>Edit Employee</h1>
 
-@await Html.PartialAsync("_EmployeeForm", Model)
+@using (Html.BeginForm("Edit", "Employee", FormMethod.Post))
+{
+    @await Html.PartialAsync("_EmployeeForm", Model)
+    <br />
+    <button type="submit" class="btn btn-primary">Confirm Changes</button>
+}

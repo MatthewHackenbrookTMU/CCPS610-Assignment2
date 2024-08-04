@@ -25,7 +25,7 @@ namespace CCPS610_Assignment2.Controllers
         [HttpGet("Department/AllDeparments")]
         public IActionResult GetAllDepartments()
         {
-            var departments = _context.HrDepartments;
+            var departments = _context.HrDepartments.OrderByDescending(u => u.DepartmentId);
             var departmentModels = departments.Select(dept => _mapper.Map<DepartmentModel>(dept)).ToList();
             return Json(departmentModels);
         }

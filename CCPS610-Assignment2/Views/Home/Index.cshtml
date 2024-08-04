@@ -2,13 +2,62 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+<div class="Home">
 
-    <p>This will be a list of componts!!!</p>
+    <div class="text-center">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header">Employees</h5>
+                    <div class="card-body">
+                        <img src="~/lib/images/EmployeesIcon.png" class="mb-3" alt="Employees Icon">
+                        <div class="d-flex flex-column">
+                            <a class="btn btn-primary mb-2" href="/Employee/Index" role="button">Get All Employees</a>
+                            <a class="btn btn-primary mb-2" href="/Employee/Create" role="button">Hire New Employee</a>
+                        </div>
+                    </div>
+                </div>
 
-    <div>
-        <a class="btn btn-primary" href="/Data1/Index" role="button">Data1!!!!</a>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h5 class="card-header">Jobs</h5>
+                    <div class="card-body">
+                        <img src="~/lib/images/JobsIcon.png" class="mb-3" alt="Jobs Icon">
+                        <div class=" d-flex flex-column">
+                            <a class="btn btn-primary mb-2" href="/Job/Index" role="button">Get All Jobs</a>
+                            <a class="btn btn-primary mb-2" href="#" role="button" data-bs-toggle="modal" data-bs-target="#jobModal">Identify Job Description</a>
+                            <a class="btn btn-primary mb-2" href="/Job/Create" role="button">Create New Job</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal fade" id="jobModal" tabindex="-1" aria-labelledby="jobModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="jobModalLabel">Identify Job Description</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group p-1">
+                        <label for="jobDescriptionInput">Job Description</label>
+                        <input type="text" class="form-control" id="jobDescriptionInput" placeholder="Enter job description">
+                    </div>
+                    <button id="lookupButton" class="btn btn-primary float-right">Look Up</button>
+                    <div class="p-2" style="display: flex; justify-content: center; align-items: center;">
+                        <div id="loadingSpinner" class="spinner-border" role="status" style="display: none; position: fixed">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <div id="lookupResult" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

@@ -1,0 +1,30 @@
+﻿@model JobModel
+@{
+}
+
+<div class="JobForm" style="padding: 20px;">
+    <div class="row">
+        <div class="form-group col w-50">
+            <label asp-for="@Model.JobId" class="control-label"></label>
+            <input id="JobId" asp-for="@Model.JobId" class="form-control w-75" />
+            <span asp-validation-for="@Model.JobId" class="text-danger"></span>
+        </div>
+        <div class="form-group col w-50">
+            <label asp-for="@Model.JobTitle" class="control-label"></label>
+            <input asp-for="@Model.JobTitle" class="form-control w-75 non-editable" />
+            <span asp-validation-for="@Model.JobTitle" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group w-50 col">
+            <label asp-for="@Model.MinSalary" class="control-label"></label>
+            <input asp-for="@Model.MinSalary" class="form-control w-75" />
+            <span asp-validation-for="@Model.MinSalary" class="text-danger"></span>
+        </div>
+        <div class="form-group w-50 col">
+            <label asp-for="@Model.MaxSalary" class="control-label"></label>
+            <input asp-for="@Model.MaxSalary" class="form-control w-75" />
+            <span asp-validation-for="@Model.MaxSalary" class="text-danger"></span>
+        </div>
+    </div>
+</div>

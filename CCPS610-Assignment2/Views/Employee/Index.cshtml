@@ -1,31 +1,40 @@
 ﻿@{
 }
 
-<div class="EmployeeList">
+<div class="EmployeeList card" style="height: 80vh; overflow: auto">
 
-    <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1>Employees</h1>
-        <a href="/Employee/Create" class="btn btn-primary">Hire New</a>
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1>Employees</h1>
+            <a href="/Employee/Create" class="btn btn-primary">Hire New</a>
+        </div>
     </div>
 
-    <table class="table table-striped table-hover" style="overflow-x: scroll">
-        <thead>
-            <tr>
-                <th scope="col">Employee Id</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Phone Number</th>
-                <th scope="col">Hire Date</th>
-                <th scope="col">Job Id</th>
-                <th scope="col">Salary</th>
-                <th scope="col">Commission Pct</th>
-                <th scope="col">Manager Id</th>
-                <th scope="col">Department Id</th>
-            </tr>
-        </thead>
-        <tbody id="employeetablebody">
-        </tbody>
-    </table>
+    <div class="card-body">
+        <div id="employeeTableLoadingSpinner" class="modal" style="display: flex; justify-content: center; align-items: center;">
+            <div class="spinner-grow" role="status" style="position: fixed; width: 200px; height: 200px; z-index: 9999;">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
 
+        <table class="table table-striped table-hover" style="overflow: scroll">
+            <thead style="position: sticky">
+                <tr>
+                    <th scope="col">Employee Id</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Hire Date</th>
+                    <th scope="col">Job Id</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Commission Pct</th>
+                    <th scope="col">Manager Id</th>
+                    <th scope="col">Department Id</th>
+                </tr>
+            </thead>
+            <tbody id="employeeTableBody">
+            </tbody>
+        </table>
+    </div>
 </div>

@@ -1,40 +1,48 @@
 ﻿@model EmployeeModel
 @{
+    var errorMessage = TempData["ErrorMessage"] as string;
 }
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <script type="text/javascript">
+        alert('@errorMessage');
+    </script>
+}
+
 <div class="EmployeeForm">
-    <form method="post" class="mt-4">
-        <div class="form-group">
-            <input type="hidden" asp-for="@Model.EmployeeId" class="form-control" />
-        </div>
-        <div class="form-group">
+    <span asp-validation-for="@Model.EmployeeId" class="text-danger"></span>
+    <div class="form-group">
+        <input type="hidden" readonly asp-for="@Model.EmployeeId" id="employeeId" class="form-control" />
+    </div>
+    <div class="form-row row">
+        <div class="form-group w-50 col">
             <label asp-for="@Model.FirstName" class="control-label"></label>
-            <input asp-for="@Model.FirstName" class="form-control" />
+            <input asp-for="@Model.FirstName" class="form-control w-75 non-editable" />
             <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group w-50 col">
             <label asp-for="@Model.LastName" class="control-label"></label>
-            <input asp-for="@Model.LastName" class="form-control" />
+            <input asp-for="@Model.LastName" class="form-control w-75 non-editable" />
             <span asp-validation-for="@Model.LastName" class="text-danger"></span>
         </div>
-        <div class="form-group">
+    </div>
+    <div class="form-row row">
+        <div class="form-group w-50 col">
             <label asp-for="@Model.Email" class="control-label"></label>
-            <input asp-for="@Model.Email" class="form-control" />
+            <input asp-for="@Model.Email" class="form-control w-75" />
             <span asp-validation-for="@Model.Email" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group w-50 col">
             <label asp-for="@Model.PhoneNumber" class="control-label"></label>
-            <input asp-for="@Model.PhoneNumber" class="form-control" />
+            <input asp-for="@Model.PhoneNumber" class="form-control w-75" />
             <span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
         </div>
-        <div class="form-group">
-            <label asp-for="HireDate" class="control-label"></label>
-            <input asp-for="HireDate" class="form-control" type="date" />
-            <span asp-validation-for="HireDate" class="text-danger"></span>
-        </div>
-        <div class="form-group">
+    </div>
+    <div class="form-row row">
+        <div class="form-group w-50 col">
             <label asp-for="@Model.JobId" class="control-label"></label>
-@*             <input asp-for="@Model.JobId" class="form-control" /> *@
-            <select asp-for="@Model.JobId" id="JobId" class="form-control form-select">
+            @*             <input asp-for="@Model.JobId" class="form-control" /> *@
+            <select asp-for="@Model.JobId" id="JobId" class="form-control form-select w-75 non-editable">
                 @{
                     if (Model.JobId == null)
                     {
@@ -48,23 +56,32 @@
             </select>
             <span asp-validation-for="@Model.JobId" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group w-50 col">
             <label asp-for="@Model.Salary" class="control-label"></label>
-            <input asp-for="@Model.Salary" class="form-control" />
+            <input asp-for="@Model.Salary" class="form-control w-75" />
             <span asp-validation-for="@Model.Salary" class="text-danger"></span>
         </div>
-        <div class="form-group">
+    </div>
+    <div class="form-row row">
+        <div class="form-group w-50 col">
             <label asp-for="@Model.CommissionPct" class="control-label"></label>
-            <input asp-for="@Model.CommissionPct" class="form-control" />
+            <input asp-for="@Model.CommissionPct" class="form-control w-75 non-editable" />
             <span asp-validation-for="@Model.CommissionPct" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group w-50 col">
+            <label asp-for="@Model.HireDate" class="control-label"></label>
+            <input asp-for="@Model.HireDate" class="form-control w-75 non-editable" />
+            <span asp-validation-for="@Model.HireDate" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row row">
+        <div class="form-group w-50 col">
             <label asp-for="@Model.ManagerId" class="control-label"></label>
-            <select asp-for="@Model.ManagerId" id="ManagerId" class="form-control form-select">
+            <select asp-for="@Model.ManagerId" id="ManagerId" class="form-control form-select w-75 non-editable">
                 @{
                     if (Model.ManagerId == null)
                     {
-                        <option selected>None</option>
+                        <option value="-1" selected>None</option>
                     }
                     else
                     {
@@ -74,14 +91,14 @@
             </select>
             <span asp-validation-for="@Model.ManagerId" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group w-50 col">
             <label asp-for="@Model.DepartmentId" class="control-label"></label>
-            <select asp-for="@Model.DepartmentId" id="DepartmentId" class="form-control form-select">
+            <select asp-for="@Model.DepartmentId" id="DepartmentId" class="form-control form-select w-75 non-editable">
                 <option selected>None</option>
                 @{
                     if (Model.DepartmentId == null)
                     {
-                        <option selected>None</option>
+                        <option value="-1" selected>None</option>
                     }
                     else
                     {
@@ -91,7 +108,5 @@
             </select>
             <span asp-validation-for="@Model.DepartmentId" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary">Create</button>
-    </form>
+    </div>
 </div>
-@* <script src="~/js/site.js" asp-append-version="true"></script> *@

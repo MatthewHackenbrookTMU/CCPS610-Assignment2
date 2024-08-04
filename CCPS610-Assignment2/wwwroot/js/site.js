@@ -1,39 +1,37 @@
 ﻿
 function Actions(id) {
-    
+
 }
 
-$('#jobtablebody').ready(function () {
-    if (!$('div').is('.JobList'))
-    {
+$('#jobTableBody').ready(function () {
+    if (!$('div').is('.JobList')) {
         return;
     }
 
-
-    $.ajax({
-        url: '/job/alljobs',
-        method: 'GET',
-        success: function (data) {
-            var tableBody = $('#jobtablebody');
-            tableBody.empty(); // Clear existing rows
-
-            data.forEach(function (job) {
-                var row = `<tr>
-                        <td>${job.jobId}</td>
-                        <td>${job.jobTitle}</td>
-                        <td>${job.minSalary ?? 'N/A'}</td>
-                        <td>${job.maxSalary ?? 'N/A'}</td>
-                    </tr>`;
-                tableBody.append(row);
-            });
-        },
-        error: function () {
-            alert('Failed to load jobs.');
-        }
-    });
+    $.getScript("/js/job-index.js")
+        .done(function (script, textStatus) {
+            console.log("Script loaded successfully: " + textStatus);
+        })
+        .fail(function (jqxhr, settings, exception) {
+            console.error("Failed to load script: " + exception);
+        });
 });
 
-$('#employeetablebody').ready(function () {
+$('.JobForm').ready(function () {
+    if (!$('div').is('.JobForm')) {
+        return;
+    }
+
+    $.getScript("/js/job-form.js")
+        .done(function (script, textStatus) {
+            console.log("Script loaded successfully: " + textStatus);
+        })
+        .fail(function (jqxhr, settings, exception) {
+            console.error("Failed to load script: " + exception);
+        });
+});
+
+$('#employeeTableBody').ready(function () {
     if (!$('div').is('.EmployeeList')) {
         return;
     }
@@ -48,6 +46,17 @@ $('#employeetablebody').ready(function () {
 
 $('.EmployeeForm').ready(function () {
     $.getScript("/js/employee-form.js")
+        .done(function (script, textStatus) {
+            console.log("Script loaded successfully: " + textStatus);
+        })
+        .fail(function (jqxhr, settings, exception) {
+            console.error("Failed to load script: " + exception);
+        });
+});
+
+
+$('.Home').ready(function () {
+    $.getScript("/js/home.js")
         .done(function (script, textStatus) {
             console.log("Script loaded successfully: " + textStatus);
         })
